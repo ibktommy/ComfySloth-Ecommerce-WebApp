@@ -1,9 +1,9 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Navbar, Sidebar, Footer } from './components'
 
 function App() {
-  return (
-    <h1>ComfySLoth Ecommerce WebApp</h1>
-  );
+  return <h4>comfy sloth starter</h4>
 }
 
-export default App;
+export default App
