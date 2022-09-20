@@ -2,6 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Contact = () => {
+  // Function to prevent reloading of form
+  const formSubmitHandler = (e) => {
+    e.preventDefault()
+  }
+
+
   return (
     <Wrapper>
       <div className="section-center">
@@ -10,7 +16,7 @@ const Contact = () => {
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore deleniti saepe, eius magni adipisci architecto blanditiis odit molestias animi? Dolorem!
           </p>
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={formSubmitHandler}>
             <input type="email" className='form-input' placeholder='enter email' />
             <button type="submit" className='submit-btn'>
               subscribe
@@ -21,8 +27,10 @@ const Contact = () => {
     </Wrapper>
   )
 }
+
 const Wrapper = styled.section`
   padding: 5rem 0;
+
   h3 {
     text-transform: none;
   }
