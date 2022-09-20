@@ -13,13 +13,35 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 
-const initialState = {}
+const initialState = {
+  isNavMenuOpen: false,
+}
 
 const ProductsContext = React.createContext()
 
 export const ProductsProvider = ({ children }) => {
+  // Getting State from Reducer
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  // Function to Open NavMenu
+  const openNavMenu = () => {
+    dispatch({
+      type: SIDEBAR_OPEN,
+    })
+  }
+  // Function to Close NavMenu
+  const closeNavMenu = () => {
+    dispatch({
+      type: SIDEBAR_CLOSE,
+    })
+  }
+
+
   return (
-    <ProductsContext.Provider value='products context'>
+    <ProductsContext.Provider value={{
+      openNavMenu,
+      closeNavMenu,
+    }}>
       {children}
     </ProductsContext.Provider>
   )
