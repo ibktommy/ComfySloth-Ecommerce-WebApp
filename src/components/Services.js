@@ -3,14 +3,45 @@ import styled from 'styled-components'
 import { services } from '../utils/constants'
 
 const Services = () => {
-  return <h4>services </h4>
+  return (
+    <Wrapper>
+      <div className="section-center">
+        <article className='header'>
+          <h3>
+            custom furniture <br />
+            built only for you
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis praesentium adipisci debitis nostrum dignissimos? Ratione totam quaerat at fugit est.
+          </p>
+        </article>
+        <div className="services-center">
+          {
+            services.map(({ id, icon, title, text }) => {
+              return (
+                <article key={id} className="service">
+                  <span className="icon">{icon}</span>
+                  <h4>{title}</h4>
+                  <p>{text}</p>
+                </article>
+              )
+            })
+          }
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
+  h3 {
+    line-height: 1.3;
+  }
   h3,
   h4 {
     color: var(--clr-primary-1);
   }
+  
   padding: 5rem 0;
 
   background: var(--clr-primary-10);
@@ -62,11 +93,12 @@ const Wrapper = styled.section`
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
   }
-  @media (min-width: 1280px) {
-    padding: 0;
-    .section-center {
-      transform: translateY(5rem);
-    }
-  }
+  // @media (min-width: 1280px) {
+  //   padding: 0;
+
+  //   .section-center {
+  //     transform: translateY(5rem);
+  //   }
+  // }
 `
 export default Services
