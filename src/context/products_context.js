@@ -14,7 +14,7 @@ import {
 } from '../actions'
 
 const initialState = {
-  isNavMenuOpen: false,
+  isSideBarOpen: false,
 }
 
 const ProductsContext = React.createContext()
@@ -24,13 +24,13 @@ export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   // Function to Open NavMenu
-  const openNavMenu = () => {
+  const openSideBar = () => {
     dispatch({
       type: SIDEBAR_OPEN,
     })
   }
   // Function to Close NavMenu
-  const closeNavMenu = () => {
+  const closeSideBar = () => {
     dispatch({
       type: SIDEBAR_CLOSE,
     })
@@ -39,8 +39,9 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider value={{
-      openNavMenu,
-      closeNavMenu,
+      ...state,
+      openSideBar,
+      closeSideBar,
     }}>
       {children}
     </ProductsContext.Provider>

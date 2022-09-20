@@ -14,14 +14,14 @@ const products_reducer = (state, action) => {
   if (action.type === SIDEBAR_OPEN) {
     return {
       ...state,
-      isNavMenuOpen: true,
+      isSideBarOpen: true,
     }
   }
   // SIDEBAR_CLOSE REDUCER FUNCTION
   if (action.type === SIDEBAR_CLOSE) {
     return {
       ...state,
-      isNavMenuOpen: false,
+      isSideBarOpen: false,
     }
   }
 
