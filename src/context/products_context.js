@@ -36,6 +36,21 @@ export const ProductsProvider = ({ children }) => {
     })
   }
 
+  // Function to Fetch Data from External API
+  const fetchData = async (url) => {
+    const response = await axios.get(url).then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(console.log(error.message))
+    })
+    console.log(response)
+  }
+
+  // UseEffect-Hook
+  useEffect(() => {
+    fetchData(url)
+  }, [])
+
 
   return (
     <ProductsContext.Provider value={{

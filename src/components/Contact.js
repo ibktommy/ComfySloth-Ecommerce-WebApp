@@ -7,7 +7,6 @@ const Contact = () => {
     e.preventDefault()
   }
 
-
   return (
     <Wrapper>
       <div className="section-center">
