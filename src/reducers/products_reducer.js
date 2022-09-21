@@ -24,6 +24,36 @@ const products_reducer = (state, action) => {
       isSideBarOpen: false,
     }
   }
+  // ACTION PERFORMED WHEN STARTING TO FETCH PRODUCTS
+  if (action.type === GET_PRODUCTS_BEGIN) {
+    return {
+      ...state, 
+      isLoadingProducts: true,
+    }
+  }
+
+  // ACTION PERFORMED WHEN PRODUCTS IS SUCCESSFULLY FETCHED FROM SERVER
+  if (action.type === GET_PRODUCTS_SUCCESS) {
+    const featured_products = action.payload.filter((filteredProducts) => {
+      return filteredProducts.featured === true
+    })
+
+    return {
+      ...state,
+      isLoadingProducts: false,
+      products: action.payload,
+      featured_products,
+    }
+  }
+  // ACTION PERFORMED WHEN PRODUCTS IS NOT FETCHED FROM SERVER
+  if (action.type === GET_PRODUCTS_ERROR) {
+    return {
+      ...state,
+      isLoadingProducts: false, 
+      isError: true,
+    }
+  }
+
 
   // return state
   throw new Error(`No Matching "${action.type}" - action type`)
