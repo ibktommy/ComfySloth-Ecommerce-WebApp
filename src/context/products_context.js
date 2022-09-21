@@ -19,6 +19,9 @@ const initialState = {
   isError: false,
   products: [],
   featured_products: [],
+  loadingSingleProduct: false,
+  errorSingleProduct: true,
+  singleProduct: [],
 }
 
 const ProductsContext = React.createContext()
@@ -40,7 +43,7 @@ export const ProductsProvider = ({ children }) => {
     })
   }
 
-  // Function to Fetch Data from External API
+  // Function to Fetch Products from External API
   const fetchData = async (url) => {
     try {
       dispatch({ type: GET_PRODUCTS_BEGIN })
@@ -54,6 +57,22 @@ export const ProductsProvider = ({ children }) => {
       dispatch({  type: GET_PRODUCTS_ERROR})
     }
   }
+
+  // Function to Fetch Single-Products from External API
+  const fetchSingleProduct = async (url) => {
+    try {
+      dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
+
+      const response = await axios.get()
+      const singleProduct = response.data
+
+      dispatch({ GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+
+    } catch (error) {
+     dispatch({ tyoe: GET_SINGLE_PRODUCT_ERROR }) 
+    }
+  }
+
 
   // UseEffect-Hook
   useEffect(() => {

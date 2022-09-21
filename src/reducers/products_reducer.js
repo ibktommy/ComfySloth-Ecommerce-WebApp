@@ -54,6 +54,32 @@ const products_reducer = (state, action) => {
     }
   }
 
+  // ACTION PERFORMED WHEN STARTING TO FETCH A SINGLE PRODUCTS
+  if (action.type === GET_PRODUCTS_BEGIN) {
+    return {
+      ...state,
+      loadingSingleProduct: true,
+      errorSingleProduct: false,
+    }
+  }
+
+  // ACTION PERFORMED WHEN A SINGLE PRODUCTS IS SUCCESSFULLY FETCHED FROM SERVER
+  if (action.type === GET_PRODUCTS_SUCCESS) {
+    return {
+      ...state,
+      loadingSingleProduct: false,
+      singleProduct: action.payload,
+    }
+  }
+
+  // ACTION PERFORMED WHEN SINGLE-PRODUCT IS NOT FETCHED FROM SERVER
+  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
+    return {
+      ...state,
+      loadingSingleProduct: false,
+      errorSingleProduct: true,
+    }
+  }
 
   // return state
   throw new Error(`No Matching "${action.type}" - action type`)
