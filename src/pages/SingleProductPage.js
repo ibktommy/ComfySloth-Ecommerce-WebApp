@@ -3,6 +3,8 @@ import { useParams, useHistory } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   Loading,
   Error,
@@ -11,12 +13,31 @@ import {
   Stars,
   PageHero,
 } from '../components'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
-  
+  // Getting the id of the product form the useParams Object
+  const { id } = useParams()
+  console.log(id)
+  // Get Values from AppContext
+  const {
+    loadingSingleProduct: loading,
+    errorSingleProduct: error,
+    singleProduct: product,
+    fetchSingleProduct,
+  } = useProductsContext()
 
+  // Calling the Function to Fetch Single Product in the useEffect after component renders
+  useEffect(() => {
+    fetchSingleProduct(`${url}$s{id}`)
+  }, [id])
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <Error />
+  }
 
   return <h4>single product page</h4>
 }

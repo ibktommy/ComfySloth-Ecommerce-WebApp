@@ -55,7 +55,7 @@ const products_reducer = (state, action) => {
   }
 
   // ACTION PERFORMED WHEN STARTING TO FETCH A SINGLE PRODUCTS
-  if (action.type === GET_PRODUCTS_BEGIN) {
+  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
     return {
       ...state,
       loadingSingleProduct: true,
@@ -64,7 +64,7 @@ const products_reducer = (state, action) => {
   }
 
   // ACTION PERFORMED WHEN A SINGLE PRODUCTS IS SUCCESSFULLY FETCHED FROM SERVER
-  if (action.type === GET_PRODUCTS_SUCCESS) {
+  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
     return {
       ...state,
       loadingSingleProduct: false,
