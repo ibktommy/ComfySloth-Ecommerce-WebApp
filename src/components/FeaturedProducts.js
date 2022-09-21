@@ -7,6 +7,10 @@ import Loading from './Loading'
 import Product from './Product'
 
 const FeaturedProducts = () => {
+  // Getting State-values from the App Global-state/context
+  const { isLoadingProducts: loading, featured_products: featuredProducts, isError: error } = useProductsContext()
+
+  
   return <h4>featured products</h4>
 }
 
