@@ -20,7 +20,7 @@ const initialState = {
   products: [],
   featured_products: [],
   loadingSingleProduct: false,
-  errorSingleProduct: true,
+  errorSingleProduct: false,
   singleProduct: [],
 }
 
@@ -45,8 +45,8 @@ export const ProductsProvider = ({ children }) => {
 
   // Function to Fetch Products from External API
   const fetchData = async (url) => {
+    dispatch({ type: GET_PRODUCTS_BEGIN })
     try {
-      dispatch({ type: GET_PRODUCTS_BEGIN })
 
       const response = await axios.get(url)
       const products = response.data
@@ -60,13 +60,13 @@ export const ProductsProvider = ({ children }) => {
 
   // Function to Fetch Single-Products from External API
   const fetchSingleProduct = async (url) => {
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
     try {
-      dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
 
-      const response = await axios.get()
-      const singleProduct = response.data
+      const response = await axios.get(url)
+      const data = response.data
 
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data })
 
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR }) 

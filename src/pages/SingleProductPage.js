@@ -17,19 +17,25 @@ import {
 const SingleProductPage = () => {
   // Getting the id of the product form the useParams Object
   const { id } = useParams()
-  console.log(id)
+  const mainUrl = `${url}${id}`
+
+  console.log(mainUrl)
+
   // Get Values from AppContext
   const {
     loadingSingleProduct: loading,
     errorSingleProduct: error,
     singleProduct: product,
     fetchSingleProduct,
+
   } = useProductsContext()
 
   // Calling the Function to Fetch Single Product in the useEffect after component renders
   useEffect(() => {
-    fetchSingleProduct(`${url}$s{id}`)
-  }, [id])
+    fetchSingleProduct(mainUrl)
+  }, [id, mainUrl, url])
+
+  console.log(product)
 
   if (loading) {
     return <Loading />
