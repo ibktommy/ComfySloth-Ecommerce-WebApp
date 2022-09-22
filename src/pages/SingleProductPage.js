@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
@@ -15,9 +15,10 @@ import {
 } from '../components'
 
 const SingleProductPage = () => {
+  const navigate = useNavigate()
   // Getting the id of the product form the useParams Object
   const { id } = useParams()
-  const mainUrl = `${url}${id}`
+  const mainUrl = `${url}s${id}`
 
   console.log(mainUrl)
 
@@ -34,6 +35,15 @@ const SingleProductPage = () => {
   useEffect(() => {
     fetchSingleProduct(mainUrl)
   }, [id, mainUrl, url])
+
+  // Navigating back to Home Page if there is Error in Fetching Data
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate('/')
+      }, 3000);
+    }
+  }, [error])
 
   console.log(product)
 
