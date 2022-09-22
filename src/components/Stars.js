@@ -3,9 +3,25 @@ import styled from 'styled-components'
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 const Stars = ({ stars, reviews }) => {
 
+  // Creating Logic to Render the Stars Dynamically
+  const starArray = Array.from({ length: 5 }, (_, index) => {
+    const starNumber = index + 0.5
+    return (
+      <span key={index}>
+        {stars >= index + 1 ? (
+          <BsStarFill />
+        ) : stars >= starNumber ? (
+          <BsStarHalf />
+        ) : (
+          <BsStar />
+        )}
+      </span>
+    )
+  })
+
   return (
     <Wrapper>
-      <div className="stars">Stars</div>
+      <div className="stars">{starArray}</div>
       <p className="reviews">{reviews}</p>
     </Wrapper>
   )
