@@ -43,7 +43,6 @@ const SingleProductPage = () => {
   //   }
   // }, [error])
 
-  console.log(product)
 
   if (loading) {
     return <Loading />

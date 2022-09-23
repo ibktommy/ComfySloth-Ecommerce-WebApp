@@ -9,8 +9,28 @@ const AddToCart = ({ product }) => {
   // Destructuring values from Product-prop
   const { id, stock, colors } = product
 
-  
-  return <h4>addToCart </h4>
+  const [mainColour, setMainColor] = useState(colors[0])
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>colors : </span>
+        <div>
+          {colors.map((colour, index) => {
+            return (
+              <button
+                key={index}
+                style={{ background: colour }}
+                className={`${mainColour === colour ? 'color-btn active' : 'color-btn'}`} onClick={() => setMainColor(colour)}
+              >
+                {mainColour === colour ? <FaCheck /> : null}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
