@@ -35,13 +35,13 @@ const SingleProductPage = () => {
   }, [id, mainUrl, url])
 
   // Navigating back to Home Page if there is Error in Fetching Data
-  // useEffect(() => {
-  //   if (error) {
-  //     setTimeout(() => {
-  //       navigate('/')
-  //     }, 3000);
-  //   }
-  // }, [error])
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate('/')
+      }, 3000);
+    }
+  }, [error])
 
 
   if (loading) {
