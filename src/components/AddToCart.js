@@ -5,7 +5,11 @@ import { FaCheck } from 'react-icons/fa'
 import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 
-const AddToCart = () => {
+const AddToCart = ({ product }) => {
+  // Destructuring values from Product-prop
+  const { id, stock, colors } = product
+
+  
   return <h4>addToCart </h4>
 }
 
