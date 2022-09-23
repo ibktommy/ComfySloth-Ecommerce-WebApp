@@ -10,6 +10,11 @@ const AddToCart = ({ product }) => {
   const { id, stock, colors } = product
 
   const [mainColour, setMainColor] = useState(colors[0])
+  const [amount, setAmount] = useState(1)
+
+  // Functions To Be Passed to the AmountButtons as props for updating the amount-state-value
+  const increase = () => {}
+  const decrease = () => {}
 
   return (
     <Wrapper>
@@ -28,6 +33,12 @@ const AddToCart = ({ product }) => {
             )
           })}
         </div>
+      </div>
+      <div className="btn-container">
+        <AmountButtons amount={amount} increase={increase} decrease={decrease}/>
+        <Link to='/cart' className='btn'>
+          add to cart
+        </Link>
       </div>
     </Wrapper>
   )
