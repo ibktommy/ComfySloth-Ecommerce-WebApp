@@ -13,8 +13,26 @@ const AddToCart = ({ product }) => {
   const [amount, setAmount] = useState(1)
 
   // Functions To Be Passed to the AmountButtons as props for updating the amount-state-value
-  const increase = () => {}
-  const decrease = () => {}
+  const increase = () => {
+    setAmount((prevAmount) => {
+      let amountIncreased = prevAmount + 1
+
+      if (amountIncreased > stock) {
+        amountIncreased = stock
+      }
+      return amountIncreased
+    })
+  }
+  const decrease = () => {
+    setAmount((prevAmount) => {
+      let amountDecreased = prevAmount - 1
+
+      if (amountDecreased < 1) {
+        amountDecreased = 1
+      }
+      return amountDecreased
+    })
+  }
 
   return (
     <Wrapper>
