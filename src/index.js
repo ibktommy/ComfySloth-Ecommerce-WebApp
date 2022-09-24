@@ -11,7 +11,9 @@ import { UserProvider } from './context/user_context'
 ReactDOM.render
   (
     <ProductsProvider>
-      <App />
+      <FilterProvider>
+        <App />
+      </FilterProvider>
     </ProductsProvider>,
     document.getElementById('root')
   )
