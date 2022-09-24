@@ -21,6 +21,14 @@ const FilterContext = React.createContext()
 
 export const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  // UseEffect Hook to load products value from products_context
+  const { products } = useProductsContext()
+
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products })
+  }, [products])
+
   return (
     <FilterContext.Provider value='filter context'>
       {children}
