@@ -2,8 +2,22 @@ import React from 'react'
 import { useFilterContext } from '../context/filter_context'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import styled from 'styled-components'
+
 const Sort = () => {
-  return <h4>sort </h4>
+  const { filtered_products, gridView } = useFilterContext()
+
+  return (
+    <Wrapper>
+      <div className="btn-container">
+        <button type='button' className={`${gridView ? 'active' : null}`}>
+          <BsFillGridFill />
+        </button>
+        <button type='button' className={`${!gridView ? 'active' : null}`}>
+          <BsList />
+        </button>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
