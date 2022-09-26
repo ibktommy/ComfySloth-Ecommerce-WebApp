@@ -73,6 +73,10 @@ export const FilterProvider = ({ children }) => {
       value = e.target.dataset.color
     }
 
+    if (name === 'shipping') {
+      value = e.target.checked
+    }
+
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
   }
 
