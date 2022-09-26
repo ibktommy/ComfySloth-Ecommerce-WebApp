@@ -30,14 +30,15 @@ const Sort = () => {
       <form>
         <label htmlFor="sort">sort by</label>
         <select
-          name="sort" id="sort"
+          name="sort"
+          id="sort"
           className='sort-input'
           style={{ cursor: 'pointer' }}
           value={sort}
           onChange={updateSort}
           defaultValue={'default'}
         > 
-          <option value={'default'} disabled>select an option</option>
+          <option value='default' disabled>select an option</option>
           <option value="price-highest">price (highest)</option>
           <option value="price-lowest">price (lowest)</option>
           <option value="name-a">name (a-z)</option>

@@ -52,14 +52,24 @@ export const FilterProvider = ({ children }) => {
   // UseEffect Hook to Handle the Sorting of Products
   useEffect(() => {
     dispatch({ type: SORT_PRODUCTS })
-  }, [products, state.sort])
+  }, [products, state.sort, state.filters])
 
   // Function To SORT PRODUCTS
   const updateSort = (e) => {
     const value = e.target.value
-
     dispatch({ type: UPDATE_SORT, payload: value })
   }
+
+  // Function Called when updating Filters
+  const updateFilters = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } })
+  }
+
+  // Function Called when clearing Filters
+  const clearFilters = () => { }
 
   return (
     <FilterContext.Provider value={{
@@ -67,6 +77,8 @@ export const FilterProvider = ({ children }) => {
       setGridView,
       setListView,
       updateSort,
+      updateFilters,
+      clearFilters,
     }}>
       {children}
     </FilterContext.Provider>
