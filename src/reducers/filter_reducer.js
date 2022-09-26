@@ -1,3 +1,4 @@
+import { act } from 'react-dom/test-utils'
 import {
   LOAD_PRODUCTS,
   SET_LISTVIEW,
@@ -29,6 +30,13 @@ const filter_reducer = (state, action) => {
     return {
       ...state,
       gridView: false,
+    }
+  }
+
+  if (action.type === UPDATE_SORT) {
+    return {
+      ...state,
+      sort: action.payload,
     }
   }
   throw new Error(`No Matching "${action.type}" - action type`)

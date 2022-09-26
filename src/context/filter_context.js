@@ -16,6 +16,7 @@ const initialState = {
   filtered_products: [],
   all_products: [],
   gridView: true,
+  sort: 'price-lowest',
 }
 
 const FilterContext = React.createContext()
@@ -38,11 +39,19 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW })
   }
 
+  // Function To SORT PRODUCTS
+  const updateSort = (e) => {
+    const value = e.target.value
+
+    dispatch({ type: UPDATE_SORT, payload: value })
+  }
+
   return (
     <FilterContext.Provider value={{
       ...state,
       setGridView,
       setListView,
+      updateSort,
     }}>
       {children}
     </FilterContext.Provider>
