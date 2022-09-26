@@ -93,12 +93,28 @@ const Filters = () => {
                   style={{ background: colorItem }}
                   className={`${color === colorItem ? 'color-btn active' : 'color-btn'}`}
                   data-color={colorItem}
+                  onClick={updateFilters}
                 >
                   {color === colorItem ? <FaCheck /> : null}
                 </button>
               )
             })}
           </div>
+        </div>
+
+        <div className="form-control">
+          <h5>price</h5>
+          <p className="price">
+            {formatPrice(price)}
+          </p>
+          <input
+            type="range"
+            name='price'
+            min={min_price}
+            max={max_price}
+            onChange={updateFilters}
+            value={price}
+          />
         </div>
       </div>
     </Wrapper>
