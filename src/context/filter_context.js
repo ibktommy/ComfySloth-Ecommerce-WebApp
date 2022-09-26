@@ -39,7 +39,7 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
-  }, [products, state.filters.max_price])
+  }, [products])
 
   // Function to Manage the ProductList-View, GridView/ListView
   const setGridView = () => {
@@ -52,6 +52,7 @@ export const FilterProvider = ({ children }) => {
   // UseEffect Hook to Handle the Sorting of Products
   useEffect(() => {
     dispatch({ type: SORT_PRODUCTS })
+    dispatch({ tyoe: SORT_PRODUCTS })
   }, [products, state.sort, state.filters])
 
   // Function To SORT PRODUCTS
