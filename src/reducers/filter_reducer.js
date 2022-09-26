@@ -21,7 +21,7 @@ const filter_reducer = (state, action) => {
       filtered_products: [...action.payload],
       filters: {
         ...state.filters,
-        max_Price: maxPrice,
+        max_price: maxPrice,
         price: maxPrice,
       }
     }
@@ -79,6 +79,21 @@ const filter_reducer = (state, action) => {
       filters: {
         ...state.filters,
         [name]: value,
+      }
+    }
+  }
+
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: '',
+        company: 'all',
+        category: 'all',
+        color: 'all',
+        price: state.filters.max_price,
+        shipping: false,
       }
     }
   }

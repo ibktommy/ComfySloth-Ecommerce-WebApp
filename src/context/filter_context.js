@@ -39,7 +39,7 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products })
-  }, [products])
+  }, [products, state.filters.max_price])
 
   // Function to Manage the ProductList-View, GridView/ListView
   const setGridView = () => {
@@ -73,6 +73,10 @@ export const FilterProvider = ({ children }) => {
       value = e.target.dataset.color
     }
 
+    if (name === 'price') {
+      value = Number(value)
+    }
+
     if (name === 'shipping') {
       value = e.target.checked
     }
@@ -81,7 +85,9 @@ export const FilterProvider = ({ children }) => {
   }
 
   // Function Called when clearing Filters
-  const clearFilters = () => { }
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS })
+  }
 
   return (
     <FilterContext.Provider value={{

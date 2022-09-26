@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../context/filter_context'
 import { getUniqueValues, formatPrice } from '../utils/helpers'
@@ -60,10 +60,20 @@ const Filters = () => {
 
         <div className="form-control">
           <h5>company</h5>
-          <select name="company" value={company} onChange={updateFilters} className='company'>
+          <select
+            name="company"
+            value={company}
+            onChange={updateFilters}
+            className='company'
+          >
             {companies.map((companyItem, index) => {
               return (
-                <option key={index} value={company}>{companyItem}</option>
+                <option
+                  key={index}
+                  value={companyItem}
+                >
+                  {companyItem}
+                </option>
               )
             })}
           </select>
@@ -121,6 +131,11 @@ const Filters = () => {
           <label htmlFor="shipping">free shipping</label>
           <input type="checkbox" name='shipping' id='shipping' onChange={updateFilters} checked={shipping} />
         </div>
+
+        <button type='button' className="clear-btn" onClick={clearFilters}>
+          {' '}
+          clear filters
+        </button>
       </div>
     </Wrapper>
   )
