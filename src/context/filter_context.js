@@ -16,7 +16,7 @@ const initialState = {
   filtered_products: [],
   all_products: [],
   gridView: true,
-  sort: 'price-lowest',
+  sort: 'all',
 }
 
 const FilterContext = React.createContext()
@@ -38,6 +38,11 @@ export const FilterProvider = ({ children }) => {
   const setListView = () => {
     dispatch({ type: SET_LISTVIEW })
   }
+
+  // UseEffect Hook to Handle the Sorting of Products
+  useEffect(() => {
+    dispatch({ type: SORT_PRODUCTS })
+  }, [products, state.sort])
 
   // Function To SORT PRODUCTS
   const updateSort = (e) => {
