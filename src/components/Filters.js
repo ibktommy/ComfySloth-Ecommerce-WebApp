@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../context/filter_context'
 import { getUniqueValues, formatPrice } from '../utils/helpers'
@@ -20,6 +20,11 @@ const Filters = () => {
     clearFilters,
     all_products,
   } = useFilterContext()
+
+  // variables that return some unique values
+  const categories = getUniqueValues(all_products, 'category')
+  const companies = getUniqueValues(all_products, 'company')
+  const colors = getUniqueValues(all_products, 'colors')
 
   return (
     <Wrapper>
